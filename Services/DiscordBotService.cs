@@ -53,5 +53,9 @@ namespace HuskyBot.Services
             var channel = await _client.GetChannelAsync(1014193913868861540) as IMessageChannel;
             await channel.SendMessageAsync("<:twitch:1014251052578648108> " + msg);
         }
+        public async Task SendMessageCount(int messagecount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
