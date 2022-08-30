@@ -51,7 +51,7 @@ namespace HuskyBot.Services
         public async Task SendTwitchChatMessage(string msg) 
         {
             var channel = await _client.GetChannelAsync(1014193913868861540) as IMessageChannel;
-            await channel.SendMessageAsync(msg);
+            await channel.SendMessageAsync(":twitch: " + msg);
         }
     }
 }
