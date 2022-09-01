@@ -9,14 +9,28 @@ namespace HuskyBot.Services
         private DiscordSocketClient _client;
         private Task _ready;
         private readonly IConfiguration _config;
-
-        private static ulong _huskyGuildId = 277449687777148928;
+        private readonly string _twitch_chat_id;
+        private readonly string _token;
+        private readonly string _discord_twitch_emote_id;
 
         public DiscordBotService(IConfiguration config)
         {
             _config = config;
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (env == "Development")
+            {
+                _twitch_chat_id = _config.GetSection("DISCORD_APP")["DISCORD_CHANNEL_TWITCH_CHAT_ID"];
+                _token = _config.GetSection("DISCORD_APP")["DISCORD_CLIENT_TOKEN"];
+                _discord_twitch_emote_id = _config.GetSection("DISCORD_APP")["DISCORD_TWITCH_EMOTE_ID"];
+            }
+            else
+            {
+                _twitch_chat_id = Environment.GetEnvironmentVariable("DISCORD_CHANNEL_TWITCH_CHAT_ID");
+                _token = Environment.GetEnvironmentVariable("DISCORD_CLIENT_TOKEN");
+                _discord_twitch_emote_id = Environment.GetEnvironmentVariable("DISCORD_TWITCH_EMOTE_ID");
+            }
+            
             Thread trd = new Thread(new ThreadStart(this.InitClient));
-            trd.IsBackground = true;
             trd.Start();
         }
 
@@ -25,19 +39,7 @@ namespace HuskyBot.Services
             _client = new DiscordSocketClient();
             _client.Ready += ReadyAsync;
 
-            // Login and connect.
-            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var token = "";
-            if (env == "Development")
-            {
-                token = _config.GetSection("DISCORD_APP")["DISCORD_CLIENT_TOKEN"];
-            }
-            else
-            {
-                token = Environment.GetEnvironmentVariable("DISCORD_CLIENT_TOKEN");
-            }
-
-            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.LoginAsync(TokenType.Bot, _token);
             await _client.StartAsync();
 
             await Task.Delay(Timeout.Infinite);
@@ -50,8 +52,8 @@ namespace HuskyBot.Services
         }
         public async Task SendTwitchChatMessage(string msg) 
         {
-            var channel = await _client.GetChannelAsync(1014193913868861540) as IMessageChannel;
-            await channel.SendMessageAsync("<:twitch:891016644518871151> " + msg);
+            var channel = await _client.GetChannelAsync(Convert.ToUInt64(_twitch_chat_id)) as IMessageChannel;
+            await channel.SendMessageAsync($"<{_discord_twitch_emote_id}> " + msg);
         }
         public async Task SendMessageCount(int messagecount)
         {
