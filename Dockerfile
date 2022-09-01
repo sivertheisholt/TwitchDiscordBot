@@ -14,6 +14,6 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENV Port=2000
-EXPOSE ${Port}
+ENV PORT=2000
+EXPOSE ${PORT}
 ENTRYPOINT ["dotnet", "HuskyBot.dll"]
