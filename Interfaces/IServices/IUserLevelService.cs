@@ -6,9 +6,9 @@ using HuskyBot.Entities;
 
 namespace HuskyBot.Interfaces.IServices
 {
-    public interface IDiscordBotService
+    public interface IUserLevelService
     {
-        Task SendTwitchChatMessage(string msg);
-        Task SendLevelUpMessage(User user, string message);
+        bool CheckLevel(User user);
+        List<double> GetLevels();
     }
 }

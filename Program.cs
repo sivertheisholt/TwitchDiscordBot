@@ -1,38 +1,40 @@
+using HuskyBot;
+using HuskyBot.Data;
 using HuskyBot.Interfaces.IServices;
 using HuskyBot.Services;
+using Microsoft.EntityFrameworkCore;
 
 public class Program
 {
-    static async Task Main(string[] args)
+    public static Task Main(string[] args) => new Program().MainAsync(args);
+    public async Task MainAsync(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
-
-        // Add services to the container.
-
-        builder.Services.AddControllers();
-
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        builder.Services.AddSingleton<IDiscordBotService, DiscordBotService>();
-
-        var app = builder.Build();
-
-        var discordBot = app.Services.GetRequiredService<IDiscordBotService>();
-
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-
-        app.UseHttpsRedirection();
-
-        app.MapControllers();
-
-        app.Run();
+        await InitHost(args);
     }
-}
+        private static async Task InitHost(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
 
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+
+            try
+            {
+                var context = services.GetRequiredService<DataContext>();
+                var discordBotService = services.GetRequiredService<IDiscordBotService>();
+            }
+            catch (System.Exception e)
+            {
+                Console.WriteLine("Something went wrong starting up applicaton " + e);
+                throw;
+            }
+
+            await host.RunAsync();
+        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+}
