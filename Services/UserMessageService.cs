@@ -22,7 +22,7 @@ namespace HuskyBot.Services
 
         private void AddXp(User user)
         {
-            if(user.Username.Equals("Wondyrr"))
+            if(user.Username.Equals("wondyrr"))
             {
                 user.Xp += 8;
             } else {
