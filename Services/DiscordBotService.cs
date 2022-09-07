@@ -80,7 +80,7 @@ namespace HuskyBot.Services
                 Text = "Level up by participating in the chat and unlock cool stuff!"
             };
 
-            var channel = await _client.GetChannelAsync(Convert.ToUInt64(_twitch_chat_id)) as IMessageChannel;
+            var channel = await _client.GetChannelAsync(Convert.ToUInt64(_twitch_bot_id)) as IMessageChannel;
             await channel.SendMessageAsync(embed: eb.Build());
         }
     }
