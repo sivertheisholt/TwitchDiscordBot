@@ -41,7 +41,7 @@ namespace HuskyBot.Services
             if(_userLevelService.CheckLevel(user))
             {
                 await _discordBotService.SendLevelUpMessage(user, message);
-                var twitchLevelUpmessageDto = new TwitchlevelUpMessageDto() {Message = $"Congratulation @{user.Username} you just level up to {user.Level}! You have sent {user.Messagecount} and earned {user.Xp}!", TwitchName = twitchName, Username = user.Username};
+                var twitchLevelUpmessageDto = new TwitchlevelUpMessageDto() {Message = $"Congratulation @{user.Username} you just level up to {user.Level}! You have sent {user.Messagecount} messages and earned {user.Xp} XP!", TwitchName = twitchName, Username = user.Username};
                 _twitchService.SendLevelUp(twitchLevelUpmessageDto);
             }
 
