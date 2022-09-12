@@ -25,11 +25,13 @@ namespace HuskyBot
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddHttpClient();
 
             services.AddSingleton<IDiscordBotService, DiscordBotService>();
 
             services.AddSingleton<IUserLevelService, UserLevelService>();
             services.AddScoped<IUserMessageService, UserMessageService>();
+            services.AddSingleton<ITwitchService, TwitchService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

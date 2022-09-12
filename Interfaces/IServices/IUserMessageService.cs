@@ -8,6 +8,6 @@ namespace HuskyBot.Interfaces.IServices
 {
     public interface IUserMessageService
     {
-        Task HandleNewMessage(User user, string username, string message);
+        Task HandleNewMessage(User user, string username, string message, string twitchName);
     }
 }
