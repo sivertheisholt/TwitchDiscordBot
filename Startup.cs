@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HuskyBot.Data;
+using HuskyBot.Helpers;
 using HuskyBot.Interfaces;
 using HuskyBot.Interfaces.IServices;
 using HuskyBot.Services;
@@ -26,6 +27,8 @@ namespace HuskyBot
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddHttpClient();
+
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
             services.AddSingleton<IDiscordBotService, DiscordBotService>();
 

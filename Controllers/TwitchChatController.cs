@@ -54,6 +54,6 @@ namespace HuskyBot.Controllers
             }
             await _userMessageService.HandleNewMessage(user, twitchChatMessageDto.Username, twitchChatMessageDto.Message, _twitchName);
             return Ok();
-        } 
+        }
     }
 }
