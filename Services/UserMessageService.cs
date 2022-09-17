@@ -28,6 +28,10 @@ namespace HuskyBot.Services
             if(user.Username.Equals("wondyrr"))
             {
                 user.Xp += 8;
+            }
+            else if(user.Username.Equals("EtherealSlime"))
+            {
+                user.Xp += 100;   
             } else {
                 user.Xp += 2;
             }
