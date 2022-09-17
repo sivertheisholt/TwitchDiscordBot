@@ -11,7 +11,7 @@ namespace HuskyBot.Services
     public class UserLevelService : IUserLevelService
     {
         private readonly List<double> _levels = new List<double>();
-        private readonly double xpFactor = 1.35;
+        private readonly double xpFactor = 1.2;
 
         public UserLevelService()
         {
@@ -26,12 +26,13 @@ namespace HuskyBot.Services
                 var newXp = 0.0;
                 if (i >= 0 && i <= 5)
                 {
-                    newXp = Math.Floor((float)xp * 1.6);
+                    newXp = Math.Floor((float)xp * 1.5);
                 }
                 else
                 {
                     newXp = Math.Floor((float)xp * xpFactor);
                 }
+                Console.WriteLine(newXp);
                 _levels.Add(newXp);
                 xp = newXp;
             }
