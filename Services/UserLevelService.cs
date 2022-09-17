@@ -21,9 +21,17 @@ namespace HuskyBot.Services
         private void CreateLevels()
         {
             var xp = 20.0;
-            for(var i = 0; i < 100; i++)
+            for (var i = 0; i < 100; i++)
             {
-                var newXp = Math.Floor((float) xp * xpFactor);
+                var newXp = 0.0;
+                if (i >= 0 && i <= 5)
+                {
+                    newXp = Math.Floor((float)xp * 1.6);
+                }
+                else
+                {
+                    newXp = Math.Floor((float)xp * xpFactor);
+                }
                 _levels.Add(newXp);
                 xp = newXp;
             }
@@ -34,7 +42,7 @@ namespace HuskyBot.Services
             var userLevel = user.Level;
             var userXp = user.Xp;
 
-            if(_levels.ElementAt(userLevel) < userXp)
+            if (_levels.ElementAt(userLevel) < userXp)
             {
                 user.Level++;
                 return true;
