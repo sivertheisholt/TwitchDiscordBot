@@ -29,7 +29,7 @@ namespace HuskyBot.Services
             {
                 user.Xp += 8;
             }
-            else if(user.Username.Equals("EtherealSlime"))
+            else if(user.Username.Equals("etherealslime"))
             {
                 user.Xp += 100;   
             } else {
