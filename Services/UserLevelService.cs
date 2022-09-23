@@ -26,7 +26,7 @@ namespace HuskyBot.Services
                 var newXp = 0.0;
                 if (i >= 0 && i <= 5)
                 {
-                    newXp = Math.Floor((float)xp * 1.5);
+                    newXp = Math.Floor((float)xp * 2);
                 }
                 else
                 {
