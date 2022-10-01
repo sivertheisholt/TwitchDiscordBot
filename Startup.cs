@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HuskyBot.Api;
 using HuskyBot.Data;
 using HuskyBot.Helpers;
 using HuskyBot.Interfaces;
@@ -31,10 +32,12 @@ namespace HuskyBot
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
             services.AddSingleton<IDiscordBotService, DiscordBotService>();
-
             services.AddSingleton<IUserLevelService, UserLevelService>();
-            services.AddScoped<IUserMessageService, UserMessageService>();
+            services.AddSingleton<IUserMessageService, UserMessageService>();
             services.AddSingleton<ITwitchService, TwitchService>();
+            services.AddSingleton<ICommandUnlockService, CommandUnlockService>();
+            services.AddSingleton<ICommandService, CommandService>();
+            services.AddSingleton<FunTranslationApi>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

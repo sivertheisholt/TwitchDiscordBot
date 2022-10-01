@@ -64,15 +64,19 @@ namespace HuskyBot.Services
         {
             throw new NotImplementedException();
         }
-        public async Task SendLevelUpMessage(User user, string message)
+        public async Task SendLevelUpMessage(User user, string message, string unlockedCommands)
         {
             var eb = new EmbedBuilder();
-
+            
             eb.Title = $"Twitch Level Up!";
             eb.Description = $"Congrats {user.Username} you just leveled up to {user.Level}!\nTheir level up message was: \n{message}";
             eb.AddField("Level", user.Level, true);
             eb.AddField("Messages", user.Messagecount, true);
             eb.AddField("XP", user.Xp, true);
+            if(unlockedCommands != "")
+            {
+                eb.AddField("Commands Unlocked", unlockedCommands, false);
+            }
             eb.AddField("You can find them over at", "https://www.twitch.tv/" + user.Username, false);
             eb.ThumbnailUrl = "https://i.imgur.com/wjfQpwo.png";
             eb.Color = 0x00FFFF;

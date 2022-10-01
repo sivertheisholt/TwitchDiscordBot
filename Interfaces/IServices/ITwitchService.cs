@@ -9,5 +9,6 @@ namespace HuskyBot.Interfaces.IServices
     public interface ITwitchService
     {
         void SendLevelUp(TwitchlevelUpMessageDto twitchLevelUpMessageDto);
+        void SendChatMessage(TwitchMessageDto messageDto);
     }
 }

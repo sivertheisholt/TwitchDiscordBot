@@ -18,6 +18,7 @@ namespace HuskyBot.Data
 
         public IUserRepository userRepository => new UserRepository(_context);
 
+
         public async Task<bool> Complete()
         {
             return await _context.SaveChangesAsync() > 0;

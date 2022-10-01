@@ -13,6 +13,7 @@ namespace HuskyBot.Entities
         public int Messagecount { get; set; }
         public int Xp { get; set; }
         public int Level { get; set; }
+        public UserCommand UserCommand { get; set; }
 
     }
 }

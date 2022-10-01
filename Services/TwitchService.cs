@@ -30,10 +30,10 @@ namespace HuskyBot.Services
                 _twitchBotBaseUrl = Environment.GetEnvironmentVariable("TWITCH_BOT_BASEURL");
                 _twitchBotBasePort = Environment.GetEnvironmentVariable("TWITCH_BOT_BASEPORT");
             }
-            
         }
         public async void SendLevelUp(TwitchlevelUpMessageDto twitchLevelUpMessageDto)
         {
+            Console.WriteLine("POST: Send level up message");
             var jsonString = JsonSerializer.Serialize(twitchLevelUpMessageDto);
             var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
             try{
@@ -41,7 +41,17 @@ namespace HuskyBot.Services
             } catch(HttpRequestException e) {
                 Console.WriteLine("Can't connect to API, skipping..." + e);
             }
-            
+        }
+        public async void SendChatMessage(TwitchMessageDto messageDto)
+        {
+            Console.WriteLine("POST: Send chat message");
+            var jsonString = JsonSerializer.Serialize(messageDto);
+            var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            try{
+                await _httpClient.PostAsync($"{_twitchBotBaseUrl}:{_twitchBotBasePort}/twitch/message", httpContent);
+            } catch(HttpRequestException e) {
+                Console.WriteLine("Can't connect to API, skipping..." + e);
+            }
         }
     }
 }

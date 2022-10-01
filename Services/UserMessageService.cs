@@ -13,25 +13,21 @@ namespace HuskyBot.Services
     {
         private readonly IUserLevelService _userLevelService;
         private readonly IDiscordBotService _discordBotService;
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ITwitchService _twitchService;
-        public UserMessageService(IUserLevelService userLevelService, IDiscordBotService discordBotService, IUnitOfWork unitOfWork, ITwitchService twitchService)
+        private readonly ICommandUnlockService _unlockService;
+        public UserMessageService(IUserLevelService userLevelService, IDiscordBotService discordBotService, ITwitchService twitchService, ICommandUnlockService unlockService)
         {
+            _unlockService = unlockService;
             _twitchService = twitchService;
-            _unitOfWork = unitOfWork;
             _discordBotService = discordBotService;
             _userLevelService = userLevelService;
         }
 
         private void AddXp(User user)
         {
-            if(user.Username.Equals("wondyrr"))
+            if(user.Username.Equals("Wondyrr"))
             {
-                user.Xp += 8;
-            }
-            else if(user.Username.Equals("etherealslime"))
-            {
-                user.Xp += 100;   
+                user.Xp += 10;
             } else {
                 user.Xp += 2;
             }
@@ -40,16 +36,29 @@ namespace HuskyBot.Services
         public async Task HandleNewMessage(User user, string username, string message, string twitchName)
         {
             await _discordBotService.SendTwitchChatMessage($"{username}: {message}");
-            AddXp(user);
             user.Messagecount++;
+            AddXp(user);
+        
             if(_userLevelService.CheckLevel(user))
             {
-                await _discordBotService.SendLevelUpMessage(user, message);
-                var twitchLevelUpmessageDto = new TwitchlevelUpMessageDto() {Message = $"Congratulation @{user.Username} you just leveled up to {user.Level}! You have sent {user.Messagecount} messages and earned {user.Xp} XP!", TwitchName = twitchName, Username = user.Username};
+                var unlockedCommandsStr = HandleUnlockedCommands(user);
+                await _discordBotService.SendLevelUpMessage(user, message, unlockedCommandsStr);
+                var twitchLevelUpmessageDto = new TwitchlevelUpMessageDto() {Message = $"Congratulation @{user.Username} you just leveled up to {user.Level}! You have sent {user.Messagecount} messages and earned {user.Xp} XP! You unlocked: \n {unlockedCommandsStr}", TwitchName = twitchName, Username = user.Username};
                 _twitchService.SendLevelUp(twitchLevelUpmessageDto);
             }
-
-            await _unitOfWork.Complete();
+        }
+        private string HandleUnlockedCommands(User user)
+        {
+            var unlockedCommands = _unlockService.GetUnlockedCommands(user.Level);
+            var unlockedCommandsStr = "";
+            if(unlockedCommands != null)
+            {
+                unlockedCommands.ForEach(command => {
+                    unlockedCommandsStr += $"!{command.CommandTrigger} {command.CommandTriggerParam} \n";
+                    user.UserCommand.GetType().GetProperty(command.CommandName).SetValue(user.UserCommand, true);
+                });
+            }
+            return unlockedCommandsStr;
         }
     }
 }
