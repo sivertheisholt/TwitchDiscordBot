@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.DTOs;
+using TwitchDiscordBot.DTOs;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace HuskyBot.Api
+namespace TwitchDiscordBot.Api
 {
     public class EvilInsultApi
     {

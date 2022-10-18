@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HuskyBot.Utilities
+namespace TwitchDiscordBot.Utilities
 {
     public static class HelperUtils
     {

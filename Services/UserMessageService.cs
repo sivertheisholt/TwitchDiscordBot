@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.DTOs;
-using HuskyBot.Entities;
-using HuskyBot.Interfaces;
-using HuskyBot.Interfaces.IServices;
+using TwitchDiscordBot.DTOs;
+using TwitchDiscordBot.Entities;
+using TwitchDiscordBot.Interfaces;
+using TwitchDiscordBot.Interfaces.IServices;
 
-namespace HuskyBot.Services
+namespace TwitchDiscordBot.Services
 {
     public class UserMessageService : IUserMessageService
     {

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.DTOs;
+using TwitchDiscordBot.DTOs;
 
-namespace HuskyBot.Interfaces.IServices
+namespace TwitchDiscordBot.Interfaces.IServices
 {
     public interface ITwitchService
     {

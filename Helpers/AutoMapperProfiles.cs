@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using HuskyBot.DTOs;
-using HuskyBot.Entities;
+using TwitchDiscordBot.DTOs;
+using TwitchDiscordBot.Entities;
 
-namespace HuskyBot.Helpers
+namespace TwitchDiscordBot.Helpers
 {
     public class AutoMapperProfiles : Profile
     {

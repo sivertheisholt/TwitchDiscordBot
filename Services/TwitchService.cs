@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using HuskyBot.DTOs;
-using HuskyBot.Interfaces.IServices;
+using TwitchDiscordBot.DTOs;
+using TwitchDiscordBot.Interfaces.IServices;
 
-namespace HuskyBot.Services
+namespace TwitchDiscordBot.Services
 {
     public class TwitchService : ITwitchService
     {

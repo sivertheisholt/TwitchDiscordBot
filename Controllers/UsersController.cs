@@ -4,12 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using HuskyBot.DTOs;
-using HuskyBot.Interfaces;
+using TwitchDiscordBot.DTOs;
+using TwitchDiscordBot.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace HuskyBot.Controllers
+namespace TwitchDiscordBot.Controllers
 {
     [Route("[controller]")]
     public class UsersController : Controller

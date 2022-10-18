@@ -1,1 +1,1 @@
-# HuskyBot
+# TwitchDiscordBot

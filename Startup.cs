@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.Api;
-using HuskyBot.Data;
-using HuskyBot.Helpers;
-using HuskyBot.Interfaces;
-using HuskyBot.Interfaces.IServices;
-using HuskyBot.Services;
+using TwitchDiscordBot.Api;
+using TwitchDiscordBot.Data;
+using TwitchDiscordBot.Helpers;
+using TwitchDiscordBot.Interfaces;
+using TwitchDiscordBot.Interfaces.IServices;
+using TwitchDiscordBot.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace HuskyBot
+namespace TwitchDiscordBot
 {
     public class Startup
     {

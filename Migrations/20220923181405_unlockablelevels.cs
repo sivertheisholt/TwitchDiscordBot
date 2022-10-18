@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace HuskyBot.Migrations
+namespace TwitchDiscordBot.Migrations
 {
     public partial class unlockablelevels : Migration
     {

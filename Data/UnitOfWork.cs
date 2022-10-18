@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.Data.Repositories;
-using HuskyBot.Interfaces;
-using HuskyBot.Interfaces.IRepositories;
+using TwitchDiscordBot.Data.Repositories;
+using TwitchDiscordBot.Interfaces;
+using TwitchDiscordBot.Interfaces.IRepositories;
 
-namespace HuskyBot.Data
+namespace TwitchDiscordBot.Data
 {
     public class UnitOfWork : IUnitOfWork
     {

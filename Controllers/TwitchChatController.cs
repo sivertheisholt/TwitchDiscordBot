@@ -1,10 +1,10 @@
-using HuskyBot.DTOs;
-using HuskyBot.Entities;
-using HuskyBot.Interfaces;
-using HuskyBot.Interfaces.IServices;
+using TwitchDiscordBot.DTOs;
+using TwitchDiscordBot.Entities;
+using TwitchDiscordBot.Interfaces;
+using TwitchDiscordBot.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HuskyBot.Controllers
+namespace TwitchDiscordBot.Controllers
 {
     [ApiController]
     [Route("[controller]")]

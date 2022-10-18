@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.Entities;
+using TwitchDiscordBot.Entities;
 
-namespace HuskyBot.Interfaces.IRepositories
+namespace TwitchDiscordBot.Interfaces.IRepositories
 {
     public interface IUserRepository :IBaseRepository<User>
     {

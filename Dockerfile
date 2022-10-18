@@ -16,4 +16,4 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 ENV PORT=2000
 EXPOSE ${PORT}
-ENTRYPOINT ["dotnet", "HuskyBot.dll"]
+ENTRYPOINT ["dotnet", "TwitchDiscordBot.dll"]

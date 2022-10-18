@@ -1,9 +1,9 @@
 using Discord;
 using Discord.WebSocket;
-using HuskyBot.Entities;
-using HuskyBot.Interfaces.IServices;
+using TwitchDiscordBot.Entities;
+using TwitchDiscordBot.Interfaces.IServices;
 
-namespace HuskyBot.Services
+namespace TwitchDiscordBot.Services
 {
  public class DiscordBotService : IDiscordBotService
     {

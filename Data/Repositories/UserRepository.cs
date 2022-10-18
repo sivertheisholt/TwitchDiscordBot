@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.Entities;
-using HuskyBot.Interfaces.IRepositories;
+using TwitchDiscordBot.Entities;
+using TwitchDiscordBot.Interfaces.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace HuskyBot.Data.Repositories
+namespace TwitchDiscordBot.Data.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.Entities;
+using TwitchDiscordBot.Entities;
 
-namespace HuskyBot.Interfaces
+namespace TwitchDiscordBot.Interfaces
 {
     public interface ICommandUnlockService
     {

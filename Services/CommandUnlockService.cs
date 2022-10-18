@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HuskyBot.Entities;
-using HuskyBot.Interfaces;
+using TwitchDiscordBot.Entities;
+using TwitchDiscordBot.Interfaces;
 using Newtonsoft.Json;
 
-namespace HuskyBot.Services
+namespace TwitchDiscordBot.Services
 {
     
     public class CommandUnlockService : ICommandUnlockService

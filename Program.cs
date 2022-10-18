@@ -1,7 +1,7 @@
-using HuskyBot;
-using HuskyBot.Data;
-using HuskyBot.Interfaces.IServices;
-using HuskyBot.Services;
+using TwitchDiscordBot;
+using TwitchDiscordBot.Data;
+using TwitchDiscordBot.Interfaces.IServices;
+using TwitchDiscordBot.Services;
 using Microsoft.EntityFrameworkCore;
 
 public class Program

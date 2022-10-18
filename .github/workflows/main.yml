@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: wondyr/huskybot:latest
+          tags: wondyr/TwitchDiscordBot:latest

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HuskyBot.DTOs;
-using HuskyBot.Entities;
+using TwitchDiscordBot.DTOs;
+using TwitchDiscordBot.Entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace HuskyBot.Api
+namespace TwitchDiscordBot.Api
 {
     public class FunTranslationApi
     {
