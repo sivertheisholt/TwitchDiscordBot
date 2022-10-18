@@ -3,9 +3,9 @@
     [
         {
             "level": 1,
-            "commandName": "TranslateYoda",
-            "commandTrigger": "translate",
-            "commandTriggerParam": "yoda"
+            "commandName": "Insult",
+            "commandTrigger": "insult",
+            "commandTriggerParam": ""
         }
     ]
 }

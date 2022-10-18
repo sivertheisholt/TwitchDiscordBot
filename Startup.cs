@@ -38,6 +38,7 @@ namespace HuskyBot
             services.AddSingleton<ICommandUnlockService, CommandUnlockService>();
             services.AddSingleton<ICommandService, CommandService>();
             services.AddSingleton<FunTranslationApi>();
+            services.AddSingleton<EvilInsultApi>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

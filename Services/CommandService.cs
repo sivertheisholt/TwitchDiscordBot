@@ -18,8 +18,10 @@ namespace HuskyBot.Services
         private readonly ICommandUnlockService _commandUnlockService;
         private readonly IConfiguration _config;
         private readonly string _twitchName;
-        public CommandService(IConfiguration config, ITwitchService twitchService, FunTranslationApi funTranslationApi, ICommandUnlockService commandUnlockService) 
+        private readonly EvilInsultApi _evilInsultApi;
+        public CommandService(IConfiguration config, ITwitchService twitchService, FunTranslationApi funTranslationApi, ICommandUnlockService commandUnlockService, EvilInsultApi evilInsultApi) 
         {
+            _evilInsultApi = evilInsultApi;
             _config = config;
             _commandUnlockService = commandUnlockService;
             _funTranslationApi = funTranslationApi;
@@ -51,14 +53,22 @@ namespace HuskyBot.Services
                             var dto = new TwitchMessageDto() {Message = res.Translated, TwitchName = _twitchName};
                             _twitchService.SendChatMessage(dto);
                             break;
+                        case "Insult":
+                            var resInsult = await _evilInsultApi.GetInsult();
+                            var dtoInsult = new TwitchMessageDto() {Message = resInsult.Insult, TwitchName = _twitchName};
+                            _twitchService.SendChatMessage(dtoInsult);
+                            break;
                         default:
                             break;
                     }
+                } else {
+                    var dtoInsult = new TwitchMessageDto() {Message = "I'm sorry, but you are not allowed to use this command!", TwitchName = _twitchName};
+                    _twitchService.SendChatMessage(dtoInsult);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                Console.WriteLine("Something wrong happen handeling command...");
+                Console.WriteLine("Something wrong happen handeling command... " + e);
             }
             
         }

@@ -10,5 +10,6 @@ namespace HuskyBot.Entities
         public int Id { get; set; }
         public bool TranslateDoge { get; set; }
         public bool TranslateYoda { get; set; }
+        public bool Insult { get; set; }
     }
 }
